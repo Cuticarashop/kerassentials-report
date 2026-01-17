@@ -3,96 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sponsored Informational Content</title>
+  <title>Advertisement | Sponsored Informational Content</title>
   <meta name="description" content="Sponsored informational content. For informational purposes only." />
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
-    :root { --max: 980px; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b0f17;
-      color: #e9eef7;
+    :root{
+      --bg:#0b0f17;
+      --card:#0f1624;
+      --soft:#131c2e;
+      --line:rgba(255,255,255,.10);
+      --text:#e9eef7;
+      --muted:rgba(233,238,247,.82);
+      --muted2:rgba(233,238,247,.72);
+      --btn:#2b7cff;
+      --btn2:#1f6cf0;
+      --max:980px;
     }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 18px; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(43,124,255,.20), transparent 55%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{ color:inherit; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
     .topbar{
       display:flex; justify-content:space-between; align-items:center;
-      gap:12px; font-size:12px; opacity:.95;
+      gap:12px; font-size:12px;
+      padding:10px 0 16px;
       border-bottom:1px solid rgba(255,255,255,.08);
-      padding-bottom:10px; margin-bottom:16px;
+      margin-bottom:16px;
     }
     .badge{
-      display:inline-block; padding:6px 10px; border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      white-space: nowrap;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      white-space:nowrap;
+      color: rgba(233,238,247,.88);
+    }
+    .dot{
+      width:7px; height:7px; border-radius:50%;
+      background: rgba(43,124,255,.95);
+      box-shadow: 0 0 0 3px rgba(43,124,255,.18);
     }
 
     .card{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
     .hero{
       padding: 22px 18px;
-      background: linear-gradient(135deg, rgba(88,160,255,.18), rgba(0,0,0,0));
+      background: linear-gradient(135deg, rgba(43,124,255,.22), rgba(0,0,0,0));
     }
-    h1{ margin:0 0 10px; font-size: 26px; line-height: 1.15; }
-    p{ margin:0 0 12px; color: rgba(233,238,247,.9); line-height:1.5; }
-    .grid{ display:grid; gap:14px; padding:18px; }
+    h1{
+      margin:0 0 10px;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -.2px;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      max-width: 74ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      padding:18px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
 
     .box{
-      background: rgba(0,0,0,.22);
+      background: rgba(0,0,0,.20);
       border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 14px;
+      border-radius: 16px;
+      padding: 16px;
     }
 
     .img-wrap{
       display:flex;
       justify-content:center;
       align-items:center;
-      padding: 6px 0 2px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      min-height: 240px;
     }
     .product-img{
-      width: min(420px, 80vw);
-      height: auto;
+      width: min(430px, 92%);
+      height:auto;
       display:block;
-      filter: drop-shadow(0 14px 30px rgba(0,0,0,.55));
+      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
+    }
+
+    .kicker{
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: rgba(233,238,247,.75);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .title2{
+      margin:0 0 10px;
+      font-size:18px;
+      line-height:1.25;
+    }
+    .p{
+      margin:0 0 10px;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 14px;
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color: rgba(233,238,247,.78);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .btn{
-      display:block; width:100%;
+      display:block;
+      width:100%;
       padding: 14px 16px;
-      border-radius: 12px;
-      background: #2b7cff;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--btn), var(--btn2));
       color:#fff;
       text-decoration:none;
       text-align:center;
       font-weight: 800;
-      border: 1px solid rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.16);
+      cursor:pointer;
+      user-select:none;
     }
+    .btn:hover{ filter: brightness(1.04); }
     .btn:active{ transform: translateY(1px); }
 
-    .small{ font-size: 12px; opacity:.9; }
-    .disclaimer{ font-size:12px; color: rgba(233,238,247,.78); }
+    .note{
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(233,238,247,.72);
+      line-height:1.45;
+    }
 
     .footer{
       padding: 14px 18px;
       border-top:1px solid rgba(255,255,255,.08);
       font-size: 12px;
-      opacity: .9;
+      color: rgba(233,238,247,.76);
     }
     .footer a{
-      color: rgba(233,238,247,.75);
+      color: rgba(233,238,247,.70);
       text-decoration: underline;
       font-size: 11px;
-      margin-right: 10px;
+      margin-right: 12px;
+    }
+    .sep{ opacity:.5; margin: 0 6px; }
+
+    /* small "info strip" */
+    .strip{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 12px;
+    }
+    .pill{
+      font-size:12px;
+      color: rgba(233,238,247,.78);
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
     }
   </style>
 </head>
@@ -100,60 +195,85 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="badge">Advertisement · Sponsored Informational Content</div>
+      <div class="badge"><span class="dot"></span>Advertisement · Sponsored Informational Content</div>
       <div class="badge">For informational purposes only</div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <h1>Sponsored information about nail & skin care</h1>
-        <p>This page contains <strong>sponsored informational content</strong>. To review the official presentation, use the button below.</p>
+        <h1>Sponsored information about nail &amp; skin care</h1>
+        <p class="sub">
+          This page contains sponsored informational content. It is not medical advice and does not provide diagnosis or treatment.
+          If you’d like to review the official presentation, continue below.
+        </p>
+
+        <div class="strip">
+          <div class="pill">Sponsored content</div>
+          <div class="pill">Informational only</div>
+          <div class="pill">External site ahead</div>
+        </div>
       </div>
 
       <div class="grid">
         <div class="box">
+          <div class="kicker">Product</div>
+
           <div class="img-wrap">
-            <!-- ✅ REPLACE WITH YOUR FULL IMAGE URL -->
-            <img class="product-img" src="https://seusite.com/assets/product.jpg" alt="Kerassentials product">
+            <!-- ✅ Correct image for your GitHub Pages repo -->
+            <img class="product-img"
+                 src="https://cuticarashop.github.io/kerassentials-report/assets/product.jpg"
+                 alt="Kerassentials product image">
           </div>
-          <p><strong>Common topics people research:</strong></p>
-          <p class="small">Moist environments, shared surfaces, footwear hygiene, and consistent routines are often discussed online in relation to nail and skin care.</p>
+
+          <h2 class="title2">What people typically look up</h2>
+          <p class="p">
+            Many searches focus on everyday habits and environment-related topics connected to nail and skin routines.
+          </p>
+          <ul class="list">
+            <li>Moist environments and shared surfaces</li>
+            <li>Footwear hygiene and routine consistency</li>
+            <li>Skin and nail care habits over time</li>
+          </ul>
         </div>
 
         <div class="box">
-          <p><strong>Next step:</strong></p>
-          <p class="small">Visit the official page to review the full presentation.</p>
-          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">View Presentation</a>
-          <div style="height:10px"></div>
-          <div class="disclaimer">
-            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment. Individual results may vary. Consult a qualified professional before making health decisions.
+          <div class="kicker">Next step</div>
+          <h2 class="title2">Continue to the official page</h2>
+          <p class="p">
+            Click below to view the official presentation on an external website.
+          </p>
+
+          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">
+            Continue to Official Page
+          </a>
+
+          <div class="note">
+            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment.
+            Individual results may vary. Always consult a qualified professional for health decisions.
           </div>
         </div>
       </div>
 
       <div class="footer">
         By continuing, you may be redirected to an external website.<br><br>
-        <!-- ✅ REPLACE "seusite.com" WITH YOUR ACTUAL DOMAIN -->
-        <a href="https://seusite.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="https://seusite.com/terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="https://seusite.com/contact.html" target="_blank" rel="noopener">Contact</a>
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
+        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
   </div>
 
   <script>
-    // ✅ REPLACE THIS WITH YOUR OFFICIAL CLICKBANK HOPLINK
-    // Format: https://hop.clickbank.net/?affiliate=YOURID&vendor=kerassent&tid=campaign_name
-    const HOPLINK = "https://hop.clickbank.net/?affiliate=adconvertx&vendor=kerassent&tid=us_native_01";
+    // ✅ Your chosen destination URL
+    const HOPLINK = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
-    document.getElementById("ctaBtn").addEventListener("click", (e) => {
-      e.preventDefault();
-      const cleanLink = HOPLINK.trim();
-      if (!cleanLink || cleanLink === "https://hop.clickbank.net/?affiliate=adconvertx&vendor=kerassent&tid=us_native_01") {
-        alert("⚠️ Please update the HOPLINK with your approved ClickBank affiliate ID.");
-        return;
-      }
-      window.location.href = cleanLink;
+    // Set link
+    const btn = document.getElementById("ctaBtn");
+    btn.href = HOPLINK;
+
+    // Optional: also redirect if someone presses Enter while focused
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") window.location.href = HOPLINK;
     });
   </script>
 </body>

@@ -53,7 +53,6 @@
       padding: 14px;
     }
 
-    /* ✅ IMAGE FIX */
     .img-wrap{
       display:flex;
       justify-content:center;
@@ -61,7 +60,7 @@
       padding: 6px 0 2px;
     }
     .product-img{
-      width: min(420px, 80vw);     /* size on mobile/desktop */
+      width: min(420px, 80vw);
       height: auto;
       display:block;
       filter: drop-shadow(0 14px 30px rgba(0,0,0,.55));
@@ -114,8 +113,8 @@
       <div class="grid">
         <div class="box">
           <div class="img-wrap">
-            <!-- ✅ IMPORTANT: this path must match your repo: /assets/product.jpg -->
-            <img class="product-img" src="assets/product.jpg" alt="Product image">
+            <!-- ✅ REPLACE WITH YOUR FULL IMAGE URL -->
+            <img class="product-img" src="https://seusite.com/assets/product.jpg" alt="Kerassentials product">
           </div>
           <p><strong>Common topics people research:</strong></p>
           <p class="small">Moist environments, shared surfaces, footwear hygiene, and consistent routines are often discussed online in relation to nail and skin care.</p>
@@ -134,23 +133,29 @@
 
       <div class="footer">
         By continuing, you may be redirected to an external website.<br><br>
-        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+        <!-- ✅ REPLACE "seusite.com" WITH YOUR ACTUAL DOMAIN -->
+        <a href="https://seusite.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://seusite.com/terms.html" target="_blank" rel="noopener">Terms</a>
+        <a href="https://seusite.com/contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
   </div>
 
   <script>
-    // ✅ Your hoplink (already inserted)
-    const HOPLINK = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
+    // ✅ REPLACE THIS WITH YOUR OFFICIAL CLICKBANK HOPLINK
+    // Format: https://hop.clickbank.net/?affiliate=YOURID&vendor=kerassent&tid=campaign_name
+    const HOPLINK = "https://hop.clickbank.net/?affiliate=adconvertx&vendor=kerassent&tid=us_native_01";
 
     document.getElementById("ctaBtn").addEventListener("click", (e) => {
       e.preventDefault();
-      window.location.href = HOPLINK;
+      const cleanLink = HOPLINK.trim();
+      if (!cleanLink || cleanLink === "https://hop.clickbank.net/?affiliate=adconvertx&vendor=kerassent&tid=us_native_01") {
+        alert("⚠️ Please update the HOPLINK with your approved ClickBank affiliate ID.");
+        return;
+      }
+      window.location.href = cleanLink;
     });
   </script>
 </body>
 </html>
-
 

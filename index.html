@@ -69,6 +69,7 @@
     h1{
       margin:0 0 10px;
       font-size:28px;
+      line-height:1.2;
     }
 
     .sub{
@@ -133,6 +134,7 @@
       text-align:center;
       font-weight:700;
       margin-top:12px;
+      border: 1px solid rgba(255,255,255,.15);
     }
 
     .btn:hover{
@@ -144,6 +146,40 @@
       border-top:1px solid rgba(255,255,255,.08);
       font-size:12px;
       opacity:.8;
+    }
+
+    /* ===== Mobile Optimization ===== */
+    @media (max-width: 480px){
+      .wrap{ padding:12px; }
+
+      h1{
+        font-size:22px;
+        line-height:1.2;
+      }
+
+      .hero{ padding:18px 14px; }
+
+      .grid{
+        padding:14px;
+        gap:12px;
+      }
+
+      .img-wrap{
+        min-height:180px;
+        padding:12px;
+      }
+
+      .product-img{ max-width:92%; }
+
+      .btn{
+        padding:16px;
+        font-size:16px;
+      }
+
+      .footer{
+        font-size:11px;
+        text-align:center;
+      }
     }
   </style>
 </head>
@@ -216,7 +252,7 @@
             return;
           }
           btn.href = DESTINATION_URL;
-          // deixa o navegador seguir o clique normal (target _blank)
+          // segue o clique normal (target _blank)
         });
       }
 

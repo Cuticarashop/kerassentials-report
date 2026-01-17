@@ -10,8 +10,7 @@
   <style>
     :root{
       --bg:#0b0f17;
-      --card:#0f1624;
-      --soft:#131c2e;
+      --card:rgba(255,255,255,.06);
       --line:rgba(255,255,255,.10);
       --text:#e9eef7;
       --muted:rgba(233,238,247,.82);
@@ -24,12 +23,12 @@
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(43,124,255,.20), transparent 55%),
-                  radial-gradient(900px 500px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(43,124,255,.20), transparent 55%),
+        radial-gradient(900px 500px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
+        var(--bg);
       color:var(--text);
     }
-    a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
     .topbar{
@@ -77,6 +76,19 @@
       max-width: 74ch;
     }
 
+    .strip{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
+    }
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(233,238,247,.86);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -92,24 +104,6 @@
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 16px;
       padding: 16px;
-    }
-
-    .img-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
-      min-height: 240px;
-    }
-    .product-img{
-      width: min(430px, 92%);
-      height:auto;
-      display:block;
-      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
     }
 
     .kicker{
@@ -138,6 +132,32 @@
       line-height: 1.6;
     }
 
+    .img-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      min-height: 240px;
+    }
+    .product-img{
+      width: 100%;
+      max-width: 430px;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
+    }
+    .img-fail{
+      display:none;
+      font-size: 12px;
+      color: rgba(233,238,247,.75);
+      text-align:center;
+      padding: 10px 0 0;
+    }
+
     .btn{
       display:block;
       width:100%;
@@ -148,46 +168,33 @@
       text-decoration:none;
       text-align:center;
       font-weight: 800;
-      border: 1px solid rgba(255,255,255,.16);
-      cursor:pointer;
-      user-select:none;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 10px 26px rgba(43,124,255,.24);
+      transition: transform .06s ease, filter .15s ease;
     }
-    .btn:hover{ filter: brightness(1.04); }
+    .btn:hover{ filter: brightness(1.03); }
     .btn:active{ transform: translateY(1px); }
 
     .note{
-      margin-top:10px;
+      margin-top: 12px;
       font-size:12px;
       color: rgba(233,238,247,.72);
-      line-height:1.45;
+      line-height:1.5;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 10px;
     }
 
     .footer{
       padding: 14px 18px;
       border-top:1px solid rgba(255,255,255,.08);
       font-size: 12px;
-      color: rgba(233,238,247,.76);
+      color: rgba(233,238,247,.78);
     }
     .footer a{
-      color: rgba(233,238,247,.70);
+      color: rgba(233,238,247,.75);
       text-decoration: underline;
       font-size: 11px;
-      margin-right: 12px;
-    }
-    .sep{ opacity:.5; margin: 0 6px; }
-
-    /* small "info strip" */
-    .strip{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top: 12px;
-    }
-    .pill{
-      font-size:12px;
-      color: rgba(233,238,247,.78);
-      padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      margin-right: 10px;
     }
   </style>
 </head>
@@ -219,10 +226,11 @@
           <div class="kicker">Product</div>
 
           <div class="img-wrap">
-            <!-- ✅ Correct image for your GitHub Pages repo -->
-            <img class="product-img"
-                 src="https://cuticarashop.github.io/kerassentials-report/assets/product.jpg"
-                 alt="Kerassentials product image">
+            <!-- ✅ BEST PRACTICE: use relative path inside GitHub Pages -->
+            <div style="width:100%; text-align:center;">
+              <img id="productImg" class="product-img" src="./assets/product.jpg" alt="Kerassentials product image">
+              <div id="imgFail" class="img-fail">Image not loading. Please confirm: /assets/product.jpg exists in this repository.</div>
+            </div>
           </div>
 
           <h2 class="title2">What people typically look up</h2>
@@ -243,39 +251,42 @@
             Click below to view the official presentation on an external website.
           </p>
 
-          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">
-            Continue to Official Page
+          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener noreferrer sponsored">
+            View Official Presentation
           </a>
 
           <div class="note">
-            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment.
-            Individual results may vary. Always consult a qualified professional for health decisions.
+            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment. Individual results may vary.
+            Always consult a qualified professional for health decisions.
           </div>
         </div>
       </div>
 
       <div class="footer">
         By continuing, you may be redirected to an external website.<br><br>
-        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+        <a href="./privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="./terms.html" target="_blank" rel="noopener">Terms</a>
+        <a href="./contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
   </div>
 
   <script>
-    // ✅ Your chosen destination URL
+    // ✅ Your chosen destination URL (as you provided)
     const HOPLINK = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
-    // Set link
+    // Button link
     const btn = document.getElementById("ctaBtn");
     btn.href = HOPLINK;
 
-    // Optional: also redirect if someone presses Enter while focused
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") window.location.href = HOPLINK;
+    // Image fallback message if it fails
+    const img = document.getElementById("productImg");
+    const fail = document.getElementById("imgFail");
+    img.addEventListener("error", () => {
+      fail.style.display = "block";
     });
   </script>
 </body>
 </html>
+
 

@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Advertisement | Sponsored Informational Content</title>
-  <meta name="description" content="Sponsored informational content for informational purposes only." />
+  <meta name="description" content="Sponsored informational content. Advertisement. For informational purposes only." />
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -168,11 +169,11 @@
       font-size: 12px;
       color: rgba(233,238,247,.80);
     }
-    .footer a{
-      color: rgba(233,238,247,.75);
-      text-decoration: underline;
-      font-size: 11px;
-      margin-right: 10px;
+    .footer span{
+      display:block;
+      font-size:11px;
+      margin-top:6px;
+      opacity:.85;
     }
   </style>
 </head>
@@ -225,25 +226,27 @@
 
           <div class="note">
             Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment.
-            Individual results may vary. Consult a qualified professional for health decisions.
+            Individual results may vary.
           </div>
         </div>
       </div>
 
       <div class="footer">
-        By continuing, you may be redirected to an external website.<br><br>
-        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+        This website is an advertisement and not a news publication.<br>
+        <span>By continuing, you may be redirected to an external website.</span>
       </div>
     </div>
   </div>
 
   <script>
-    const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
-    document.getElementById("ctaBtn").href = DESTINATION_URL;
+    (function(){
+      const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
+      var btn = document.getElementById("ctaBtn");
+      if(btn){
+        btn.setAttribute("href", DESTINATION_URL);
+      }
+    })();
   </script>
 </body>
 </html>
-
 

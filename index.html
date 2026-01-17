@@ -15,12 +15,13 @@
       --line:rgba(255,255,255,.10);
       --text:#e9eef7;
       --muted:rgba(233,238,247,.82);
-      --muted2:rgba(233,238,247,.72);
       --btn:#2b7cff;
       --btnHover:#1f6cf0;
       --max:980px;
     }
+
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
@@ -30,27 +31,26 @@
         radial-gradient(900px 520px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
         var(--bg);
     }
+
     .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
     .topbar{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:12px; font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      font-size:12px;
       padding:10px 0 16px;
       border-bottom:1px solid rgba(255,255,255,.08);
       margin-bottom:16px;
     }
+
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px; border-radius:999px;
+      padding:7px 10px;
+      border-radius:999px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.10);
       white-space:nowrap;
-      color: rgba(233,238,247,.88);
-    }
-    .dot{
-      width:7px; height:7px; border-radius:50%;
-      background: rgba(43,124,255,.95);
-      box-shadow: 0 0 0 3px rgba(43,124,255,.18);
     }
 
     .card{
@@ -60,16 +60,17 @@
       background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
+
     .hero{
       padding: 22px 18px;
       background: linear-gradient(135deg, rgba(43,124,255,.22), rgba(0,0,0,0));
     }
+
     h1{
       margin:0 0 10px;
-      font-size: 28px;
-      line-height: 1.15;
-      letter-spacing: -.2px;
+      font-size:28px;
     }
+
     .sub{
       margin:0;
       color: var(--muted);
@@ -83,6 +84,7 @@
       gap:14px;
       padding:18px;
     }
+
     @media (max-width: 860px){
       .grid{ grid-template-columns: 1fr; }
     }
@@ -95,85 +97,53 @@
     }
 
     .kicker{
-      margin: 0 0 8px;
-      font-size: 13px;
-      color: rgba(233,238,247,.72);
+      font-size:13px;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      opacity:.7;
+      margin-bottom:8px;
     }
 
     .img-wrap{
       display:flex;
       justify-content:center;
       align-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
-      min-height: 260px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:16px;
+      margin-bottom:12px;
+      min-height:260px;
     }
+
     .product-img{
-      width: min(460px, 96%);
+      max-width:100%;
       height:auto;
       display:block;
       filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
     }
 
-    .title2{
-      margin:0 0 10px;
-      font-size:18px;
-      line-height:1.25;
-    }
-    .p{
-      margin:0 0 10px;
-      color: var(--muted);
-      line-height:1.55;
-      font-size: 14px;
-    }
-    .list{
-      margin:10px 0 0;
-      padding-left: 18px;
-      color: rgba(233,238,247,.78);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
     .btn{
       display:block;
       width:100%;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: var(--btn);
+      padding:14px 16px;
+      border-radius:12px;
+      background:var(--btn);
       color:#fff;
       text-decoration:none;
       text-align:center;
-      font-weight: 800;
-      border: 1px solid rgba(255,255,255,.15);
-      transition: transform .08s ease, background .12s ease;
-      margin-top: 10px;
+      font-weight:700;
+      margin-top:12px;
     }
-    .btn:hover{ background: var(--btnHover); }
-    .btn:active{ transform: translateY(1px); }
 
-    .note{
-      margin-top: 12px;
-      font-size:12px;
-      color: rgba(233,238,247,.72);
-      line-height:1.55;
+    .btn:hover{
+      background:var(--btnHover);
     }
 
     .footer{
-      padding: 14px 18px;
+      padding:14px 18px;
       border-top:1px solid rgba(255,255,255,.08);
-      font-size: 12px;
-      color: rgba(233,238,247,.80);
-    }
-    .footer span{
-      display:block;
-      font-size:11px;
-      margin-top:6px;
-      opacity:.85;
+      font-size:12px;
+      opacity:.8;
     }
   </style>
 </head>
@@ -181,7 +151,7 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="badge"><span class="dot"></span> Advertisement · Sponsored Informational Content</div>
+      <div class="badge">Advertisement · Sponsored Informational Content</div>
       <div class="badge">For informational purposes only</div>
     </div>
 
@@ -189,8 +159,7 @@
       <div class="hero">
         <h1>Sponsored information about nail & skin care</h1>
         <p class="sub">
-          This page contains sponsored informational content. It is not medical advice and does not provide diagnosis or treatment.
-          If you’d like to review the official presentation, use the button below.
+          This page contains sponsored informational content. It is not medical advice.
         </p>
       </div>
 
@@ -199,54 +168,34 @@
           <div class="kicker">Product</div>
 
           <div class="img-wrap">
-            <img class="product-img" src="assets/product.jpg" alt="Product image">
+            <!-- IMAGEM CORRETA -->
+            <img class="product-img"
+                 src="assets/product-fixed.jpg"
+                 alt="Kerassentials product image">
           </div>
-
-          <h2 class="title2">What people typically look up</h2>
-          <p class="p">
-            Many searches focus on everyday habits and environment-related topics connected to nail and skin routines.
-          </p>
-          <ul class="list">
-            <li>Moist environments and shared surfaces</li>
-            <li>Footwear hygiene and routine consistency</li>
-            <li>Skin and nail care habits over time</li>
-          </ul>
         </div>
 
         <div class="box">
           <div class="kicker">Next step</div>
-          <h2 class="title2">Visit the official page</h2>
-          <p class="p">
-            Click below to view the official presentation on an external website.
-          </p>
+          <p>Click below to view the official presentation.</p>
 
           <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">
             View Official Website
           </a>
-
-          <div class="note">
-            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment.
-            Individual results may vary.
-          </div>
         </div>
       </div>
 
       <div class="footer">
-        This website is an advertisement and not a news publication.<br>
-        <span>By continuing, you may be redirected to an external website.</span>
+        This website is an advertisement. You may be redirected to an external website.
       </div>
     </div>
   </div>
 
   <script>
-    (function(){
-      const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
-      var btn = document.getElementById("ctaBtn");
-      if(btn){
-        btn.setAttribute("href", DESTINATION_URL);
-      }
-    })();
+    document.getElementById("ctaBtn").href =
+      "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
   </script>
 </body>
 </html>
+
 

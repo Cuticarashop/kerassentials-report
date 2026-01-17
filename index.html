@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Advertisement | Sponsored Informational Content</title>
-  <meta name="description" content="Sponsored informational content for educational purposes only." />
+  <title>Sponsored Informational Content</title>
+  <meta name="description" content="Sponsored informational content. For informational purposes only." />
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -17,9 +17,10 @@
       color: #e9eef7;
     }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 18px; }
+
     .topbar{
       display:flex; justify-content:space-between; align-items:center;
-      gap:12px; font-size:12px; opacity:.92;
+      gap:12px; font-size:12px; opacity:.95;
       border-bottom:1px solid rgba(255,255,255,.08);
       padding-bottom:10px; margin-bottom:16px;
     }
@@ -29,36 +30,43 @@
       border: 1px solid rgba(255,255,255,.12);
       white-space: nowrap;
     }
+
     .card{
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      overflow:hidden;
+      border-radius: 16px;
+      overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
     .hero{
       padding: 22px 18px;
       background: linear-gradient(135deg, rgba(88,160,255,.18), rgba(0,0,0,0));
     }
-    h1{ margin:0 0 10px; font-size:26px; line-height:1.15; }
-    p{ margin:0 0 12px; color: rgba(233,238,247,.92); line-height:1.5; }
-    .grid{ display:grid; gap:14px; padding: 18px; }
+    h1{ margin:0 0 10px; font-size: 26px; line-height: 1.15; }
+    p{ margin:0 0 12px; color: rgba(233,238,247,.9); line-height:1.5; }
+    .grid{ display:grid; gap:14px; padding:18px; }
+
     .box{
       background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:14px;
-      padding:14px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    /* ✅ IMAGE FIX */
+    .img-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding: 6px 0 2px;
     }
     .product-img{
-      width:100%;
-      max-width:420px;
-      height:auto;
+      width: min(420px, 80vw);     /* size on mobile/desktop */
+      height: auto;
       display:block;
-      margin: 0 auto 12px;
-      border-radius:14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,.55));
     }
+
     .btn{
       display:block; width:100%;
       padding: 14px 16px;
@@ -67,23 +75,24 @@
       color:#fff;
       text-decoration:none;
       text-align:center;
-      font-weight:800;
+      font-weight: 800;
       border: 1px solid rgba(255,255,255,.15);
     }
     .btn:active{ transform: translateY(1px); }
-    .small{ font-size:12px; opacity:.88; }
-    .disclaimer{
-      font-size:12px; color: rgba(233,238,247,.78);
-      margin-top:10px;
-    }
+
+    .small{ font-size: 12px; opacity:.9; }
+    .disclaimer{ font-size:12px; color: rgba(233,238,247,.78); }
+
     .footer{
       padding: 14px 18px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      font-size:12px; opacity:.88;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+      opacity: .9;
     }
     .footer a{
       color: rgba(233,238,247,.75);
       text-decoration: underline;
+      font-size: 11px;
       margin-right: 10px;
     }
   </style>
@@ -96,25 +105,27 @@
       <div class="badge">For informational purposes only</div>
     </div>
 
-    <div class="card" id="clickArea">
+    <div class="card">
       <div class="hero">
-        <h1>Sponsored information about nail &amp; skin care</h1>
-        <p>This page contains <strong>advertising</strong> content provided for informational purposes only. To view the official presentation, use the button below.</p>
+        <h1>Sponsored information about nail & skin care</h1>
+        <p>This page contains <strong>sponsored informational content</strong>. To review the official presentation, use the button below.</p>
       </div>
 
       <div class="grid">
         <div class="box">
-          <img class="product-img" src="assets/product.jpg" alt="Product image" />
+          <div class="img-wrap">
+            <!-- ✅ IMPORTANT: this path must match your repo: /assets/product.jpg -->
+            <img class="product-img" src="assets/product.jpg" alt="Product image">
+          </div>
           <p><strong>Common topics people research:</strong></p>
-          <p class="small">Moist environments, shared surfaces, footwear hygiene, and consistent routines are often discussed online in relation to nail &amp; skin care.</p>
+          <p class="small">Moist environments, shared surfaces, footwear hygiene, and consistent routines are often discussed online in relation to nail and skin care.</p>
         </div>
 
         <div class="box">
           <p><strong>Next step:</strong></p>
           <p class="small">Visit the official page to review the full presentation.</p>
-
-          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">View Official Presentation</a>
-
+          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">View Presentation</a>
+          <div style="height:10px"></div>
           <div class="disclaimer">
             Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment. Individual results may vary. Consult a qualified professional before making health decisions.
           </div>
@@ -123,14 +134,15 @@
 
       <div class="footer">
         By continuing, you may be redirected to an external website.<br><br>
-        <a href="privacy.html" rel="nofollow">Privacy Policy</a>
-        <a href="terms.html" rel="nofollow">Terms</a>
-        <a href="contact.html" rel="nofollow">Contact</a>
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
+        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
   </div>
 
   <script>
+    // ✅ Your hoplink (already inserted)
     const HOPLINK = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
     document.getElementById("ctaBtn").addEventListener("click", (e) => {
@@ -140,4 +152,5 @@
   </script>
 </body>
 </html>
+
 

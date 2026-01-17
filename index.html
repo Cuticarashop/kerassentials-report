@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Advertisement | Sponsored Informational Content</title>
-  <meta name="description" content="Sponsored informational content. For informational purposes only." />
+  <meta name="description" content="Sponsored informational content for informational purposes only." />
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -16,18 +16,18 @@
       --muted:rgba(233,238,247,.82);
       --muted2:rgba(233,238,247,.72);
       --btn:#2b7cff;
-      --btn2:#1f6cf0;
+      --btnHover:#1f6cf0;
       --max:980px;
     }
     *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(43,124,255,.20), transparent 55%),
-        radial-gradient(900px 500px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
-        var(--bg);
       color:var(--text);
+      background:
+        radial-gradient(1100px 650px at 10% -10%, rgba(43,124,255,.22), transparent 55%),
+        radial-gradient(900px 520px at 110% 10%, rgba(0,255,209,.10), transparent 45%),
+        var(--bg);
     }
     .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
@@ -53,10 +53,10 @@
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--line);
       border-radius:18px;
       overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
     .hero{
@@ -73,25 +73,12 @@
       margin:0;
       color: var(--muted);
       line-height:1.55;
-      max-width: 74ch;
-    }
-
-    .strip{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:14px;
-    }
-    .pill{
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(233,238,247,.86);
+      max-width: 78ch;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1.1fr .9fr;
       gap:14px;
       padding:18px;
     }
@@ -107,12 +94,31 @@
     }
 
     .kicker{
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       font-size: 13px;
-      color: rgba(233,238,247,.75);
+      color: rgba(233,238,247,.72);
       text-transform: uppercase;
       letter-spacing: .08em;
     }
+
+    .img-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      min-height: 260px;
+    }
+    .product-img{
+      width: min(460px, 96%);
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
+    }
+
     .title2{
       margin:0 0 10px;
       font-size:18px;
@@ -132,63 +138,35 @@
       line-height: 1.6;
     }
 
-    .img-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
-      min-height: 240px;
-    }
-    .product-img{
-      width: 100%;
-      max-width: 430px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
-    }
-    .img-fail{
-      display:none;
-      font-size: 12px;
-      color: rgba(233,238,247,.75);
-      text-align:center;
-      padding: 10px 0 0;
-    }
-
     .btn{
       display:block;
       width:100%;
       padding: 14px 16px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--btn), var(--btn2));
+      border-radius: 12px;
+      background: var(--btn);
       color:#fff;
       text-decoration:none;
       text-align:center;
       font-weight: 800;
       border: 1px solid rgba(255,255,255,.15);
-      box-shadow: 0 10px 26px rgba(43,124,255,.24);
-      transition: transform .06s ease, filter .15s ease;
+      transition: transform .08s ease, background .12s ease;
+      margin-top: 10px;
     }
-    .btn:hover{ filter: brightness(1.03); }
+    .btn:hover{ background: var(--btnHover); }
     .btn:active{ transform: translateY(1px); }
 
     .note{
       margin-top: 12px;
       font-size:12px;
       color: rgba(233,238,247,.72);
-      line-height:1.5;
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 10px;
+      line-height:1.55;
     }
 
     .footer{
       padding: 14px 18px;
       border-top:1px solid rgba(255,255,255,.08);
       font-size: 12px;
-      color: rgba(233,238,247,.78);
+      color: rgba(233,238,247,.80);
     }
     .footer a{
       color: rgba(233,238,247,.75);
@@ -202,23 +180,17 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="badge"><span class="dot"></span>Advertisement · Sponsored Informational Content</div>
+      <div class="badge"><span class="dot"></span> Advertisement · Sponsored Informational Content</div>
       <div class="badge">For informational purposes only</div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <h1>Sponsored information about nail &amp; skin care</h1>
+        <h1>Sponsored information about nail & skin care</h1>
         <p class="sub">
           This page contains sponsored informational content. It is not medical advice and does not provide diagnosis or treatment.
-          If you’d like to review the official presentation, continue below.
+          If you’d like to review the official presentation, use the button below.
         </p>
-
-        <div class="strip">
-          <div class="pill">Sponsored content</div>
-          <div class="pill">Informational only</div>
-          <div class="pill">External site ahead</div>
-        </div>
       </div>
 
       <div class="grid">
@@ -226,11 +198,7 @@
           <div class="kicker">Product</div>
 
           <div class="img-wrap">
-            <!-- ✅ BEST PRACTICE: use relative path inside GitHub Pages -->
-            <div style="width:100%; text-align:center;">
-              <img id="productImg" class="product-img" src="./assets/product.jpg" alt="Kerassentials product image">
-              <div id="imgFail" class="img-fail">Image not loading. Please confirm: /assets/product.jpg exists in this repository.</div>
-            </div>
+            <img class="product-img" src="assets/product.jpg" alt="Product image">
           </div>
 
           <h2 class="title2">What people typically look up</h2>
@@ -246,45 +214,34 @@
 
         <div class="box">
           <div class="kicker">Next step</div>
-          <h2 class="title2">Continue to the official page</h2>
+          <h2 class="title2">Visit the official page</h2>
           <p class="p">
             Click below to view the official presentation on an external website.
           </p>
 
-          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener noreferrer sponsored">
-            View Official Presentation
+          <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">
+            View Official Website
           </a>
 
           <div class="note">
-            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment. Individual results may vary.
-            Always consult a qualified professional for health decisions.
+            Disclaimer: This is sponsored content and is not medical advice, diagnosis, or treatment.
+            Individual results may vary. Consult a qualified professional for health decisions.
           </div>
         </div>
       </div>
 
       <div class="footer">
         By continuing, you may be redirected to an external website.<br><br>
-        <a href="./privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="./terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="./contact.html" target="_blank" rel="noopener">Contact</a>
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="terms.html" target="_blank" rel="noopener">Terms</a>
+        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
   </div>
 
   <script>
-    // ✅ Your chosen destination URL (as you provided)
-    const HOPLINK = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
-
-    // Button link
-    const btn = document.getElementById("ctaBtn");
-    btn.href = HOPLINK;
-
-    // Image fallback message if it fails
-    const img = document.getElementById("productImg");
-    const fail = document.getElementById("imgFail");
-    img.addEventListener("error", () => {
-      fail.style.display = "block";
-    });
+    const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
+    document.getElementById("ctaBtn").href = DESTINATION_URL;
   </script>
 </body>
 </html>

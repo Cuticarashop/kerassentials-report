@@ -11,7 +11,6 @@
   <style>
     :root{
       --bg:#0b0f17;
-      --card:rgba(255,255,255,.06);
       --line:rgba(255,255,255,.10);
       --text:#e9eef7;
       --muted:rgba(233,238,247,.82);
@@ -132,13 +131,20 @@
       color:#fff;
       text-decoration:none;
       text-align:center;
-      font-weight:700;
+      font-weight:800;
       margin-top:12px;
       border: 1px solid rgba(255,255,255,.15);
+      transition: background .12s ease, transform .08s ease;
     }
 
-    .btn:hover{
-      background:var(--btnHover);
+    .btn:hover{ background:var(--btnHover); }
+    .btn:active{ transform: translateY(1px); }
+
+    .note{
+      margin:10px 0 0;
+      font-size:12px;
+      opacity:.75;
+      line-height:1.4;
     }
 
     .footer{
@@ -150,36 +156,44 @@
 
     /* ===== Mobile Optimization ===== */
     @media (max-width: 480px){
-      .wrap{ padding:12px; }
+      .wrap{ padding:10px; }
+
+      .topbar{
+        padding:8px 0 10px;
+        margin-bottom:10px;
+        gap:8px;
+      }
+      .badge{ padding:6px 9px; font-size:11px; }
+
+      .hero{ padding:12px 12px; }
 
       h1{
-        font-size:22px;
-        line-height:1.2;
+        font-size:20px;
+        margin:0 0 6px;
+        line-height:1.15;
       }
 
-      .hero{ padding:18px 14px; }
+      .sub{ font-size:13px; line-height:1.45; }
 
-      .grid{
-        padding:14px;
-        gap:12px;
-      }
+      .grid{ padding:14px; gap:12px; }
+
+      .box{ padding:12px; }
 
       .img-wrap{
         min-height:180px;
-        padding:12px;
+        padding:10px;
       }
 
-      .product-img{ max-width:92%; }
+      .product-img{
+        width: min(320px, 92%);
+      }
 
       .btn{
         padding:16px;
         font-size:16px;
       }
 
-      .footer{
-        font-size:11px;
-        text-align:center;
-      }
+      .footer{ font-size:11px; text-align:center; }
     }
   </style>
 </head>
@@ -194,15 +208,12 @@
     <div class="card">
       <div class="hero">
         <h1>Sponsored information about nail & skin care</h1>
-        <p class="sub">
-          This page contains sponsored informational content. It is not medical advice.
-        </p>
+        <p class="sub">This page contains sponsored informational content. It is not medical advice.</p>
       </div>
 
       <div class="grid">
         <div class="box">
           <div class="kicker">Product</div>
-
           <div class="img-wrap">
             <img class="product-img"
                  src="assets/product-fixed.jpg"
@@ -212,14 +223,18 @@
 
         <div class="box" id="nextBox">
           <div class="kicker">Next step</div>
-          <p>Click below to view the official presentation.</p>
+          <p style="margin:0 0 8px;">Click below to view the official presentation.</p>
 
           <a class="btn" id="ctaBtn" href="#" target="_blank" rel="nofollow noopener sponsored">
             View Official Website
           </a>
 
-          <p id="waitMsg" style="margin:10px 0 0; font-size:12px; opacity:.75; display:none;">
+          <p id="waitMsg" class="note" style="display:none;">
             Please wait a moment…
+          </p>
+
+          <p class="note">
+            Disclaimer: Sponsored content. No diagnosis or treatment is provided.
           </p>
         </div>
       </div>
@@ -242,17 +257,34 @@
       let unlocked = false;
       setTimeout(() => { unlocked = true; }, 2500);
 
-      // Botão: só abre destino quando estiver liberado
+      // Anti "clicker burro": bloqueia multi-cliques muito rápidos
+      let lastClick = 0;
+      function tooFast(){
+        const now = Date.now();
+        const fast = (now - lastClick) < 350; // 0.35s
+        lastClick = now;
+        return fast;
+      }
+
+      function openDest(){
+        window.open(DESTINATION_URL, "_blank", "noopener");
+      }
+
       if(btn){
-        btn.href = "#";
+        btn.setAttribute("href", "#");
         btn.addEventListener("click", function(e){
           if(!unlocked){
             e.preventDefault();
             if(waitMsg) waitMsg.style.display = "block";
             return;
           }
-          btn.href = DESTINATION_URL;
-          // segue o clique normal (target _blank)
+          if(tooFast()){
+            e.preventDefault();
+            return;
+          }
+          // abre seguro em nova aba
+          e.preventDefault();
+          openDest();
         });
       }
 
@@ -260,14 +292,15 @@
       if(nextBox){
         nextBox.style.cursor = "pointer";
         nextBox.addEventListener("click", function(e){
-          // se clicou no botão, não duplica
           if(e.target && e.target.closest && e.target.closest("#ctaBtn")) return;
 
           if(!unlocked){
             if(waitMsg) waitMsg.style.display = "block";
             return;
           }
-          window.open(DESTINATION_URL, "_blank", "noopener");
+          if(tooFast()) return;
+
+          openDest();
         });
       }
     })();

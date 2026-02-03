@@ -17,10 +17,11 @@
       --btn:#2b7cff;
       --btnHover:#1f6cf0;
       --max:980px;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
     }
 
     *{ box-sizing:border-box; }
-
     html, body { overflow-x:hidden; }
 
     body{
@@ -33,6 +34,8 @@
         var(--bg);
     }
 
+    a{ color:inherit; }
+
     .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
     .topbar{
@@ -44,6 +47,7 @@
       padding:10px 0 16px;
       border-bottom:1px solid rgba(255,255,255,.08);
       margin-bottom:16px;
+      flex-wrap:wrap;
     }
 
     .badge{
@@ -56,10 +60,10 @@
 
     .card{
       border:1px solid var(--line);
-      border-radius:18px;
+      border-radius:var(--radius);
       overflow:hidden;
       background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      box-shadow: var(--shadow);
     }
 
     .hero{
@@ -75,125 +79,109 @@
 
     .sub{
       margin:0;
-      color: var(--muted);
-      line-height:1.55;
-      max-width: 78ch;
+      color:var(--muted);
+      line-height:1.5;
+      max-width:70ch;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:14px;
-      padding:18px;
-    }
-
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
+      padding:16px 16px 8px;
     }
 
     .box{
-      background: rgba(0,0,0,.20);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 16px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background: rgba(0,0,0,.22);
     }
 
     .kicker{
-      font-size:13px;
-      text-transform: uppercase;
-      opacity:.7;
-      margin-bottom:8px;
-      letter-spacing:.06em;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(233,238,247,.86);
+      margin:0 0 10px;
     }
 
     .img-wrap{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      padding:10px;
       display:flex;
-      justify-content:center;
       align-items:center;
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:16px;
-      padding:16px;
+      justify-content:center;
+      min-height:200px;
       margin-bottom:12px;
-      min-height:260px;
     }
 
     .product-img{
-      width: min(520px, 100%);
+      width:min(360px, 92%);
       height:auto;
       display:block;
-      filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
-    }
-
-    .btn{
-      display:block;
-      width:100%;
-      padding:14px 16px;
       border-radius:12px;
-      background:var(--btn);
-      color:#fff;
-      text-decoration:none;
-      text-align:center;
-      font-weight:800;
-      margin-top:12px;
-      border: 1px solid rgba(255,255,255,.15);
-      transition: background .12s ease, transform .08s ease;
-      cursor:pointer;
-      user-select:none;
+      object-fit:cover;
     }
-
-    .btn:hover{ background:var(--btnHover); }
-    .btn:active{ transform: translateY(1px); }
 
     .note{
       margin:10px 0 0;
+      color:var(--muted);
       font-size:12px;
-      opacity:.78;
       line-height:1.45;
     }
 
+    .btn{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:100%;
+      padding:14px 16px;
+      border-radius:12px;
+      background: var(--btn);
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      cursor:pointer;
+      user-select:none;
+      transition: transform .08s ease, background .15s ease;
+      box-shadow: 0 16px 30px rgba(43,124,255,.20);
+    }
+    .btn:hover{ background: var(--btnHover); }
+    .btn:active{ transform: translateY(1px); }
+
     .footer{
-      padding:14px 18px;
       border-top:1px solid rgba(255,255,255,.08);
+      padding:14px 18px;
+      color:var(--muted);
       font-size:12px;
-      opacity:.85;
+      line-height:1.45;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      background: rgba(0,0,0,.18);
     }
 
-    /* MOBILE: arruma as badges e deixa o layout “bonito” */
-    @media (max-width: 480px){
-      .wrap{ padding:10px; }
+    .links a{
+      color:var(--muted);
+      text-decoration:underline;
+      margin-right:10px;
+      white-space:nowrap;
+    }
 
-      .topbar{
-        flex-wrap:wrap;
-        justify-content:flex-start;
-        gap:8px;
-        padding:8px 0 10px;
-        margin-bottom:10px;
-      }
+    #waitMsg{ display:none; margin-top:10px; font-size:12px; color:var(--muted); }
 
-      .badge{
-        white-space:normal;
-        font-size:11px;
-        padding:6px 9px;
-      }
-
-      .hero{ padding:12px 12px; }
-
-      h1{ font-size:20px; margin:0 0 6px; line-height:1.15; }
-
-      .sub{ font-size:13px; line-height:1.45; }
-
-      .grid{ padding:14px; gap:12px; }
-
-      .box{ padding:12px; }
-
-      .img-wrap{ min-height:180px; padding:10px; }
-
-      .product-img{ width:min(340px, 92%); }
-
-      .btn{ padding:16px; font-size:16px; }
-
-      .footer{ font-size:11px; text-align:center; }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      h1{ font-size:24px; }
+      .img-wrap{ min-height:180px; }
+      .footer{ justify-content:center; text-align:center; }
     }
   </style>
 </head>
@@ -210,28 +198,32 @@
         <h1>Sponsored information about nail &amp; skin care</h1>
         <p class="sub">
           This page contains sponsored informational content. It is not medical advice.
+          Always consult a qualified professional for personal guidance.
         </p>
       </div>
 
       <div class="grid">
+        <!-- LEFT -->
         <div class="box">
           <div class="kicker">Product</div>
 
           <div class="img-wrap">
-            <img class="product-img"
-                 src="assets/product-fixed.jpg"
-                 alt="Kerassentials product image">
+            <!-- ✅ imagem será trocada via ?img=01|02|03 -->
+            <img class="product-img" id="mainImg"
+                 src="assets/img/creative-01.jpg"
+                 alt="Sponsored product image">
           </div>
 
           <p class="note">
             Disclaimer: Sponsored content. No diagnosis or treatment is provided.
+            Results may vary. Please review the official information on the destination website.
           </p>
         </div>
 
-        <!-- AQUI: clique fora do botão (SAFE) - só nesta caixa -->
+        <!-- RIGHT (CTA) -->
         <div class="box" id="nextBox" aria-label="Continue box">
           <div class="kicker">Next step</div>
-          <p style="margin:0 0 8px; color: var(--muted); line-height:1.45;">
+          <p style="margin:0 0 10px; color: var(--muted); line-height:1.45;">
             Click below to view the official presentation.
           </p>
 
@@ -239,31 +231,59 @@
             View Official Website
           </a>
 
-          <p id="waitMsg" class="note" style="display:none;">
-            Please wait a moment…
+          <div id="waitMsg">Please wait a moment…</div>
+
+          <p class="note">
+            This website is an advertisement. You may be redirected to an external website.
           </p>
         </div>
       </div>
 
       <div class="footer">
-        This website is an advertisement. You may be redirected to an external website.
+        <div>© <span id="yr"></span> Sponsored informational page</div>
+        <div class="links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     (function(){
+      // ✅ 1) COLE AQUI O LINK FINAL (HOPLINK) CORRETO:
       const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
+      // ✅ 2) Ano no rodapé
+      const yr = document.getElementById("yr");
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      // ✅ 3) Ler parâmetro do criativo: ?img=01 | 02 | 03 (aceita 1|2|3)
+      const qs = new URLSearchParams(window.location.search);
+      let img = (qs.get("img") || "01").trim();
+
+      if (img === "1") img = "01";
+      if (img === "2") img = "02";
+      if (img === "3") img = "03";
+      if (!["01","02","03"].includes(img)) img = "01";
+
+      // ✅ 4) Trocar imagem conforme criativo
+      const mainImg = document.getElementById("mainImg");
+      if(mainImg){
+        mainImg.src = "assets/img/creative-" + img + ".jpg";
+      }
+
+      // ✅ 5) Elementos
       const btn = document.getElementById("ctaBtn");
       const nextBox = document.getElementById("nextBox");
       const waitMsg = document.getElementById("waitMsg");
 
-      // Anti-bot simples: libera clique só depois de 2.5s
+      // ✅ Anti-bot leve: libera clique só depois de 2.5s
       let unlocked = false;
       setTimeout(() => { unlocked = true; }, 2500);
 
-      // Anti "clicker burro": bloqueia multi-cliques muito rápidos
+      // ✅ Anti multi-clique rápido
       let lastClick = 0;
       function tooFast(){
         const now = Date.now();
@@ -272,39 +292,46 @@
         return fast;
       }
 
-      function openDest(){
-        window.open(DESTINATION_URL, "_blank", "noopener");
+      // ✅ 6) Montar URL final com tag do criativo (separar conversões)
+      function buildUrl(){
+        try{
+          const u = new URL(DESTINATION_URL);
+          // Se teu tracking usar outro parâmetro, trocamos aqui:
+          u.searchParams.set("subid", img); // 01/02/03
+          return u.toString();
+        }catch(e){
+          return DESTINATION_URL;
+        }
+      }
+
+      function go(){
+        // Mais “natural” e menos bloqueio que window.open
+        window.location.href = buildUrl();
+      }
+
+      function safeGo(){
+        if(!unlocked){
+          if(waitMsg) waitMsg.style.display = "block";
+          return;
+        }
+        if(tooFast()) return;
+        go();
       }
 
       if(btn){
         btn.setAttribute("href", "#");
         btn.addEventListener("click", function(e){
           e.preventDefault();
-
-          if(!unlocked){
-            if(waitMsg) waitMsg.style.display = "block";
-            return;
-          }
-          if(tooFast()) return;
-
-          openDest();
+          safeGo();
         });
       }
 
-      // Clique fora do botão (SAFE): só na caixa da direita
+      // Clique fora do botão: só na caixa da direita
       if(nextBox){
         nextBox.style.cursor = "pointer";
         nextBox.addEventListener("click", function(e){
-          // se clicou no botão, não duplica
           if(e.target && e.target.closest && e.target.closest("#ctaBtn")) return;
-
-          if(!unlocked){
-            if(waitMsg) waitMsg.style.display = "block";
-            return;
-          }
-          if(tooFast()) return;
-
-          openDest();
+          safeGo();
         });
       }
     })();

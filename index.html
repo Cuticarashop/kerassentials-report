@@ -34,8 +34,7 @@
         var(--bg);
     }
 
-    a{ color:inherit; }
-
+    a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:18px; }
 
     .topbar{
@@ -73,145 +72,134 @@
 
     h1{
       margin:0 0 10px;
-      font-size:28px;
-      line-height:1.2;
+      font-size:30px;
+      line-height:1.15;
+      letter-spacing:-.2px;
     }
 
     .sub{
       margin:0;
       color:var(--muted);
-      line-height:1.5;
-      max-width:70ch;
+      line-height:1.55;
+      max-width: 70ch;
+      font-size:14px;
     }
 
-    .grid{
+    .content{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap:14px;
-      padding:16px 16px 8px;
+      padding:14px;
+    }
+
+    @media (max-width: 860px){
+      .content{ grid-template-columns: 1fr; }
     }
 
     .box{
-      padding:14px;
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.09);
       border-radius:14px;
-      background: rgba(0,0,0,.22);
+      padding:14px;
+      background: rgba(0,0,0,.18);
     }
 
     .kicker{
-      font-weight:800;
-      letter-spacing:.04em;
-      text-transform:uppercase;
       font-size:12px;
-      color: rgba(233,238,247,.86);
-      margin:0 0 10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:rgba(233,238,247,.75);
+      margin-bottom:10px;
     }
 
-    .img-wrap{
-      border:1px solid rgba(255,255,255,.10);
+    .imgWrap{
       border-radius:14px;
-      background: rgba(255,255,255,.04);
-      padding:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:200px;
-      margin-bottom:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#0b0f17;
     }
 
-    .product-img{
-      width:min(360px, 92%);
+    img{
+      width:100%;
       height:auto;
       display:block;
-      border-radius:12px;
-      object-fit:cover;
     }
 
     .note{
       margin:10px 0 0;
-      color:var(--muted);
       font-size:12px;
+      color:rgba(233,238,247,.75);
       line-height:1.45;
     }
 
     .btn{
-      display:flex;
-      justify-content:center;
+      display:inline-flex;
       align-items:center;
+      justify-content:center;
       width:100%;
-      padding:14px 16px;
+      padding:13px 14px;
       border-radius:12px;
       background: var(--btn);
       color:#fff;
-      font-weight:800;
+      font-weight:700;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .15s ease;
+      margin-top:10px;
       text-decoration:none;
-      border:1px solid rgba(255,255,255,.10);
-      cursor:pointer;
-      user-select:none;
-      transition: transform .08s ease, background .15s ease;
-      box-shadow: 0 16px 30px rgba(43,124,255,.20);
     }
+
     .btn:hover{ background: var(--btnHover); }
-    .btn:active{ transform: translateY(1px); }
+
+    #waitMsg{
+      display:none;
+      margin-top:10px;
+      font-size:12px;
+      color:rgba(233,238,247,.75);
+    }
 
     .footer{
-      border-top:1px solid rgba(255,255,255,.08);
-      padding:14px 18px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.45;
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
       justify-content:space-between;
-      align-items:center;
-      background: rgba(0,0,0,.18);
+      gap:10px;
+      flex-wrap:wrap;
+      padding:14px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      color:rgba(233,238,247,.75);
     }
 
     .links a{
-      color:var(--muted);
       text-decoration:underline;
-      margin-right:10px;
-      white-space:nowrap;
+      margin-left:12px;
+      color:rgba(233,238,247,.85);
     }
-
-    #waitMsg{ display:none; margin-top:10px; font-size:12px; color:var(--muted); }
-
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
-      h1{ font-size:24px; }
-      .img-wrap{ min-height:180px; }
-      .footer{ justify-content:center; text-align:center; }
-    }
+    .links a:first-child{ margin-left:0; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+    <!-- DISCLOSURE ABOVE THE FOLD -->
     <div class="topbar">
-      <div class="badge">Advertisement · Sponsored Informational Content</div>
+      <div class="badge">Advertisement • Sponsored Informational Content</div>
       <div class="badge">For informational purposes only</div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <h1>Sponsored information about nail &amp; skin care</h1>
+        <h1>Sponsored information about nail & skin care</h1>
         <p class="sub">
           This page contains sponsored informational content. It is not medical advice.
           Always consult a qualified professional for personal guidance.
         </p>
       </div>
 
-      <div class="grid">
+      <div class="content">
         <!-- LEFT -->
         <div class="box">
           <div class="kicker">Product</div>
 
-          <div class="img-wrap">
-            <!-- ✅ imagem será trocada via ?img=01|02|03 -->
-            <img class="product-img" id="mainImg"
-                 src="assets/img/creative-01.jpg"
-                 alt="Sponsored product image">
+          <div class="imgWrap">
+            <img id="mainImg" src="assets/img/creative-01.jpg" alt="Sponsored product image">
           </div>
 
           <p class="note">
@@ -220,7 +208,7 @@
           </p>
         </div>
 
-        <!-- RIGHT (CTA) -->
+        <!-- RIGHT -->
         <div class="box" id="nextBox" aria-label="Continue box">
           <div class="kicker">Next step</div>
           <p style="margin:0 0 10px; color: var(--muted); line-height:1.45;">
@@ -252,38 +240,35 @@
 
   <script>
     (function(){
-      // ✅ 1) COLE AQUI O LINK FINAL (HOPLINK) CORRETO:
+      // FINAL LINK (HOPLINK)
       const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
-      // ✅ 2) Ano no rodapé
+      // Year
       const yr = document.getElementById("yr");
       if (yr) yr.textContent = new Date().getFullYear();
 
-      // ✅ 3) Ler parâmetro do criativo: ?img=01 | 02 | 03 (aceita 1|2|3)
+      // Read img param
       const qs = new URLSearchParams(window.location.search);
       let img = (qs.get("img") || "01").trim();
-
       if (img === "1") img = "01";
       if (img === "2") img = "02";
       if (img === "3") img = "03";
       if (!["01","02","03"].includes(img)) img = "01";
 
-      // ✅ 4) Trocar imagem conforme criativo
+      // Set image
       const mainImg = document.getElementById("mainImg");
-      if(mainImg){
-        mainImg.src = "assets/img/creative-" + img + ".jpg";
-      }
+      if (mainImg) mainImg.src = "assets/img/creative-" + img + ".jpg";
 
-      // ✅ 5) Elementos
+      // Elements
       const btn = document.getElementById("ctaBtn");
       const nextBox = document.getElementById("nextBox");
       const waitMsg = document.getElementById("waitMsg");
 
-      // ✅ Anti-bot leve: libera clique só depois de 2.5s
+      // Light anti-bot: unlock after 2.5s
       let unlocked = false;
       setTimeout(() => { unlocked = true; }, 2500);
 
-      // ✅ Anti multi-clique rápido
+      // Anti rapid multi-click
       let lastClick = 0;
       function tooFast(){
         const now = Date.now();
@@ -292,26 +277,23 @@
         return fast;
       }
 
-      // ✅ 6) Montar URL final com tag do criativo (separar conversões)
       function buildUrl(){
         try{
           const u = new URL(DESTINATION_URL);
-          // Se teu tracking usar outro parâmetro, trocamos aqui:
-          u.searchParams.set("subid", img); // 01/02/03
+          u.searchParams.set("subid", img);
           return u.toString();
-        }catch(e){
+        } catch(e){
           return DESTINATION_URL;
         }
       }
 
       function go(){
-        // Mais “natural” e menos bloqueio que window.open
         window.location.href = buildUrl();
       }
 
       function safeGo(){
         if(!unlocked){
-          if(waitMsg) waitMsg.style.display = "block";
+          if (waitMsg) waitMsg.style.display = "block";
           return;
         }
         if(tooFast()) return;
@@ -319,18 +301,16 @@
       }
 
       if(btn){
-        btn.setAttribute("href", "#");
         btn.addEventListener("click", function(e){
           e.preventDefault();
           safeGo();
         });
       }
 
-      // Clique fora do botão: só na caixa da direita
       if(nextBox){
         nextBox.style.cursor = "pointer";
         nextBox.addEventListener("click", function(e){
-          if(e.target && e.target.closest && e.target.closest("#ctaBtn")) return;
+          if (e.target && e.target.closest && e.target.closest("#ctaBtn")) return;
           safeGo();
         });
       }

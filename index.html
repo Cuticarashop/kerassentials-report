@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>Advertisement | Sponsored Informational Content</title>
-  <meta name="description" content="Sponsored informational content. Advertisement. For informational purposes only." />
+
+  <meta name="description" content="Advertisement. Sponsored informational content. For informational purposes only." />
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -73,10 +73,121 @@
     h1{
       margin:0 0 10px;
       font-size:30px;
+      line-height:1.15;
+    }
+
+    .sub{
+      margin:0;
+      color: var(--muted);
+      line-height:1.45;
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      padding:14px;
+    }
+
+    @media (max-width: 860px){
+      .content{ grid-template-columns:1fr; }
+      h1{ font-size:26px; }
+    }
+
+    .box{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      background: rgba(0,0,0,.18);
+      padding:14px;
+    }
+
+    .kicker{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(233,238,247,.72);
+      margin: 0 0 10px;
+    }
+
+    .imgWrap{
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+
+    .imgWrap img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .btn{
+      display:inline-block;
+      width:100%;
+      text-align:center;
+      padding:14px 14px;
+      border-radius:12px;
+      background: var(--btn);
+      color:#fff;
+      font-weight:700;
+      margin-top:10px;
+    }
+    .btn:hover{ background: var(--btnHover); }
+
+    .note{
+      margin:12px 0 0;
+      font-size:12px;
+      color: rgba(233,238,247,.75);
+      line-height:1.45;
+    }
+
+    #waitMsg{
+      display:none;
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(233,238,247,.75);
+    }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      color: rgba(233,238,247,.75);
+      flex-wrap:wrap;
+    }
+
+    .links a{
+      margin-left:12px;
+      text-decoration:underline;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="badge"><b>ADVERTISEMENT</b> • Sponsored Informational Content</div>
+      <div class="badge">For informational purposes only</div>
+    </div>
+
+    <div class="card">
+      <div class="hero">
+        <h1>Sponsored Information About Nail &amp; Skin Care</h1>
+        <p class="sub">
+          This page contains sponsored informational content. It is not medical advice.
+          Always consult a qualified professional for personal guidance.
+        </p>
       </div>
 
       <div class="content">
-        <!-- LEFT -->
         <div class="box">
           <div class="kicker">Product</div>
 
@@ -85,16 +196,20 @@
           </div>
 
           <p class="note">
-            Disclaimer: Sponsored content. No diagnosis or treatment is provided.
+            Disclosure: Sponsored content. No diagnosis or treatment is provided.
             Results may vary. Please review the official information on the destination website.
           </p>
         </div>
 
-        <!-- RIGHT -->
         <div class="box" id="nextBox" aria-label="Continue box">
           <div class="kicker">Next step</div>
-          <p style="margin:0 0 10px; color: var(--muted); line-height:1.45;">
+
+          <p class="sub" style="margin:0 0 8px;">
             Click below to view the official presentation.
+          </p>
+
+          <p class="sub" style="margin:0 0 6px;">
+            You’ll be taken to an external website. This page is an advertisement.
           </p>
 
           <a class="btn" id="ctaBtn" href="#" rel="nofollow noopener sponsored">
@@ -122,35 +237,29 @@
 
   <script>
     (function(){
-      // FINAL LINK (HOPLINK)
       const DESTINATION_URL = "https://kerassentials.com/?hopId=66916c46-736f-4651-80be-f9e080b6ab43&hop=adconvertx";
 
-      // Year
       const yr = document.getElementById("yr");
       if (yr) yr.textContent = new Date().getFullYear();
 
-      // Read img param
       const qs = new URLSearchParams(window.location.search);
       let img = (qs.get("img") || "01").trim();
+
       if (img === "1") img = "01";
       if (img === "2") img = "02";
       if (img === "3") img = "03";
       if (!["01","02","03"].includes(img)) img = "01";
 
-      // Set image
       const mainImg = document.getElementById("mainImg");
       if (mainImg) mainImg.src = "assets/img/creative-" + img + ".jpg";
 
-      // Elements
       const btn = document.getElementById("ctaBtn");
       const nextBox = document.getElementById("nextBox");
       const waitMsg = document.getElementById("waitMsg");
 
-      // Light anti-bot: unlock after 2.5s
       let unlocked = false;
       setTimeout(() => { unlocked = true; }, 2500);
 
-      // Anti rapid multi-click
       let lastClick = 0;
       function tooFast(){
         const now = Date.now();
@@ -164,14 +273,12 @@
           const u = new URL(DESTINATION_URL);
           u.searchParams.set("subid", img);
           return u.toString();
-        } catch(e){
+        }catch(e){
           return DESTINATION_URL;
         }
       }
 
-      function go(){
-        window.location.href = buildUrl();
-      }
+      function go(){ window.location.href = buildUrl(); }
 
       function safeGo(){
         if(!unlocked){
@@ -200,4 +307,5 @@
   </script>
 </body>
 </html>
+
 
